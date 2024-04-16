@@ -25,6 +25,9 @@ echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
 whoami
 pwd
-ls -bl target
+ls -l target
+echo ${NAME} " " ${VERSION}
+NAME=`echo ${NAME} | tr -cd '[:print:]'`
+VERSION=`echo ${VERSION} | tr -cd '[:print:]'`
 ls -l "target/${NAME}-${VERSION}.jar"
 java -jar target/${NAME}-${VERSION}.jar
