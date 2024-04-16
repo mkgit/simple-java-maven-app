@@ -27,7 +27,7 @@ whoami
 pwd
 ls -l target
 echo ${NAME} " " ${VERSION}
-NAME=`echo ${NAME} | sed "s/[0m//g"`
-VERSION=`echo ${VERSION} | sed "s/[0m//g"`
+NAME=`echo ${NAME} | sed "s/\[0m//g"`
+VERSION=`echo ${VERSION} | sed "s/\[0m//g"`
 ls -l "target/${NAME}-${VERSION}.jar"
 java -jar target/${NAME}-${VERSION}.jar
