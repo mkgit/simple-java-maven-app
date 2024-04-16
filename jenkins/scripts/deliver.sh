@@ -26,5 +26,5 @@ set -x
 whoami
 pwd
 sleep 2
-ls -l target/${NAME}-${VERSION}.jar
+ls -l target
 java -jar target/${NAME}-${VERSION}.jar
