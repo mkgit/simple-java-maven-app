@@ -21,9 +21,10 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh 'pwd' 
+                sh 'pwd'
                 sh './jenkins/scripts/deliver.sh' 
             }
         }
     }
 }
+
