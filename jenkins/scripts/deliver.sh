@@ -11,23 +11,16 @@ set +x
 echo 'The following command extracts the value of the <name/> element'
 echo 'within <project/> of your Java/Maven project''s "pom.xml" file.'
 set -x
-NAME=`mvn -q -DforceStdout help:evaluate -Dexpression=project.name | tr -cd '[:print:]'`
+NAME=`mvn -q -DforceStdout help:evaluate -Dexpression=project.name | tr -cd '[:print:]' | sed "s/\[0m//g"`
 set +x
 
 echo 'The following command behaves similarly to the previous one but'
 echo 'extracts the value of the <version/> element within <project/> instead.'
 set -x
-VERSION=`mvn -q -DforceStdout help:evaluate -Dexpression=project.version | tr -cd '[:print:]'`
+VERSION=`mvn -q -DforceStdout help:evaluate -Dexpression=project.version | tr -cd '[:print:]' | sed "s/\[0m//g"`
 set +x
 
 echo 'The following command runs and outputs the execution of your Java'
 echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
-whoami
-pwd
-ls -l target
-echo ${NAME} " " ${VERSION}
-NAME=`echo ${NAME} | sed "s/\[0m//g"`
-VERSION=`echo ${VERSION} | sed "s/\[0m//g"`
-ls -l "target/${NAME}-${VERSION}.jar"
 java -jar target/${NAME}-${VERSION}.jar
