@@ -1,9 +1,7 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.7-openjdk-18'
-            args '-v /root/.m2:/root/.m2'
-        }
+    agent any
+    options {
+        skipStagesAfterUnstable()
     }
     stages {
         stage('Build') {
